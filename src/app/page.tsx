@@ -1,8 +1,5 @@
-export default function Home() {
+import { redirect } from "next/navigation"
 
-  return (
-    <div>
-      Logged In
-    </div>
-  )
+export default function Home() {
+  redirect('/start')
 }
