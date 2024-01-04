@@ -5,7 +5,7 @@ type Props = {}
 
 const SignUpPage = (props: Props) => {
     return (
-        <SignUp />
+        <SignUp signInUrl='/start/login' />
     )
 }
 
