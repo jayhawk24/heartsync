@@ -1,8 +1,24 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
+import localFont from '@next/font/local'
 
-const inter = Inter({ subsets: ['latin'] })
+const gilroy = localFont({
+  src: [
+    {
+      path: '../../public/fonts/Gilroy-Light.otf',
+      weight: '400'
+    },
+    {
+      path: '../../public/fonts/Gilroy-SemiBold.woff',
+      weight: '600'
+    },
+    {
+      path: '../../public/fonts/Gilroy-ExtraBold.otf',
+      weight: '800'
+    }
+  ],
+  variable: '--font-gilroy'
+})
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,7 +32,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={gilroy.className}>{children}</body>
     </html>
   )
 }
