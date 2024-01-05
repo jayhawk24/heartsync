@@ -38,8 +38,9 @@ const Nav = ({ className }: Props) => {
         <div className={`absolute bottom-0 w-full ${className}`}>
             <div className='flex items-center justify-evenly w-full bg-primary-800 rounded-tl-3xl rounded-tr-3xl'>
                 {navItems.map((item, index) => (
-                    <Link className='p-2 h-20 w-20 flex justify-center items-center' href={item.link} key={index}>
+                    <Link className='p-2 h-20 w-20 flex  flex-col justify-center items-center' href={item.link} key={index}>
                         <Image src={item.icon} alt={item.name} />
+                        <div>{item.name}</div>
                     </Link>
                 ))}
             </div>

@@ -11,7 +11,7 @@ export default function StartLayout({ children }: StartLayoutProps) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-screen">
       <div className="hidden sm:flex">
-        <div className="relative h-full w-full object-cover ">
+        <div className="relative h-full w-full object-contain ">
           <Image src="/banner.jpg" alt="Vercel Logo" layout="fill" />
         </div>
       </div>
