@@ -1,3 +1,4 @@
+"use-client"
 import React, { useEffect, useRef, useState } from "react";
 import Peer from "simple-peer";
 import { io } from "socket.io-client";
@@ -23,13 +24,14 @@ function VideoCall() {
     const myVideo = useRef<HTMLVideoElement>(null);
 
     useEffect(() => {
-        navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then((stream) => {
+        navigator.mediaDevices?.getUserMedia({ video: true, audio: false }).then((stream) => {
             setStream(stream);
             if (myVideo && myVideo.current)
                 myVideo.current.srcObject = stream;
         });
 
         socket.on("me", (id) => {
+            console.log(id)
             setMe(id);
         });
 
@@ -39,6 +41,7 @@ function VideoCall() {
             setName(data.name);
             setCallerSignal(data.signal);
         });
+        console.log('event-handler registered', connectionRef.current)
     }, [myVideo]);
 
     const callUser = (id: string) => {
@@ -79,7 +82,7 @@ function VideoCall() {
         });
 
         peer.on("signal", (data) => {
-            socket.emit("answerCall", { signal: data, to: caller });
+            socket.emit("answerCall", { signal: data, to: caller, from: me });
         });
 
         peer.on("stream", (stream) => {
@@ -100,7 +103,7 @@ function VideoCall() {
     return (
         <>
             <div>
-                <div className="flex flex-row h-full w-full justify-center gap-[15%] h-screen z-">
+                <div className="flex flex-row h-full w-full justify-center gap-[15%] bg-blue-200">
                     <div>
                         <div className="flex-grow flex flex-col items-center justify-center h-[90%]">
                             <span className="text-white font-bold text-md mb-4 text-center underline">

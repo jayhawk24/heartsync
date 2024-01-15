@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Modal from '@/components/Modal';
 import Button from './Button';
 
@@ -11,10 +11,10 @@ const JoinMeetingModal = (props: Props) => {
     return (
         <>
             <Modal isOpen={isOpen} setIsOpen={setIsOpen} heading='join a meeting'>
+                {/* <VideoCall /> */}
                 <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                        Your payment has been successfully submitted. We’ve sent
-                        you an email with all of the details of your order.
+                        Copy your ID and anyone using the same server can use it to call you and vice versa!
                     </p>
                 </div>
                 <div className="mt-4">
